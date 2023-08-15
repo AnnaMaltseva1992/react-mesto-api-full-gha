@@ -1,0 +1,7 @@
+.popup__figure {
+  padding: 0;
+  row-gap: 10px;
+  position: fixed;
+  margin: auto;
+  z-index: 2;
+}

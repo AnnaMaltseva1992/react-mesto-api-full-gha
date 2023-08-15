@@ -1,0 +1,13 @@
+.popup__form-section {
+  display: grid;
+  row-gap: 5px;
+  position: relative;
+}
+
+.popup__form-section:first-of-type {
+  margin-bottom: 29px;
+}
+
+.popup__form-section:last-of-type {
+  margin-bottom: 48px;
+}
