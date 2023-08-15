@@ -66,10 +66,10 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: "https://mesto.nomoreparties.co/v1/cohort-57",
+  baseUrl: "https://annamaltsevaback.nomoredomains.work",
   headers: {
-    authorization: "25c2d675-17da-4af0-aa90-e4053257d999",
-    "Content-Type": "application/json",
+    // authorization: "25c2d675-17da-4af0-aa90-e4053257d999",
+    // "Content-Type": "application/json",
   },
 });
 

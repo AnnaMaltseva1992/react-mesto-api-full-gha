@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://auth.nomoreparties.co';
+export const BASE_URL = 'https://annamaltsevaback.nomoredomains.work';
 
 function prepareResponse(res) {
   if (res.ok) {
