@@ -1,7 +1,6 @@
 class Api {
   constructor(config) {
     this._baseUrl = config.baseUrl;
-    this._headers = config.headers;
   }
 
   _prepareResponse(res) {
@@ -13,53 +12,81 @@ class Api {
   }
 
   getUserInformation() {
+    const token = localStorage.getItem("jwt");
     return fetch(`${this._baseUrl}/users/me`, {
       method: "GET",
-      headers: this._headers,
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
     }).then(this._prepareResponse);
   }
 
   getInitialCards() {
+    const token = localStorage.getItem("jwt");
     return fetch(`${this._baseUrl}/cards`, {
       method: "GET",
-      headers: this._headers,
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
     }).then(this._prepareResponse);
   }
 
   editProfile(data) {
+    const token = localStorage.getItem("jwt");
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
-      headers: this._headers,
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({ name: data.name, about: data.about }),
     }).then(this._prepareResponse);
   }
 
   addNewCard(data) {
+    const token = localStorage.getItem("jwt");
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
-      headers: this._headers,
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({ name: data.place, link: data.link }),
     }).then(this._prepareResponse);
   }
 
   deleteCard(cardId) {
+    const token = localStorage.getItem("jwt");
     return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: "DELETE",
-      headers: this._headers,
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
     }).then(this._prepareResponse);
   }
 
   changeLikeCardStatus(cardId, isLiked) {
+    const token = localStorage.getItem("jwt");
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: isLiked ? "DELETE" : "PUT",
-      headers: this._headers,
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
     }).then(this._prepareResponse);
   }
 
   editAvatar(avatar) {
+    const token = localStorage.getItem("jwt");
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
-      headers: this._headers,
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify(avatar),
     }).then(this._prepareResponse);
   }
@@ -67,10 +94,6 @@ class Api {
 
 const api = new Api({
   baseUrl: "https://annamaltsevaback.nomoredomains.work",
-  headers: {
-    // authorization: "25c2d675-17da-4af0-aa90-e4053257d999",
-    // "Content-Type": "application/json",
-  },
 });
 
 export { api };

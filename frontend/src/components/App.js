@@ -188,6 +188,8 @@ function App() {
         } else if (err.status === 401) {
           console.log("401 - пользователь с email не найден");
         }
+        setInfoToolTipPopupOpen(true);
+        setIsSuccess(false);
       });
   }
 
