@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP 51.250.110.37
+IP 158.160.77.194
 
 Frontend https://annamaltseva.nomoredomains.work
 
