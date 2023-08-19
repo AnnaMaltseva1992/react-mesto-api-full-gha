@@ -179,6 +179,7 @@ function App() {
                 if (res) {
                     setLoggedIn(true);
                     setEmail(res.data.email);
+                    navigate("/main", { replace: true });
                 }
             })
             .catch((err) => {
@@ -218,11 +219,12 @@ function App() {
   //   tokenCheck();
   // }, []);
 
-  useEffect(() => {
-    if (loggedIn === true) {
-        navigate('/main')
-    }
-}, [loggedIn, navigate]);
+//   useEffect(() => {
+//     if (loggedIn === true) {
+//         navigate('/main')
+//         setEmail(email);
+//     }
+// }, [loggedIn, navigate]);
 
 
   function handleSignOut() {
