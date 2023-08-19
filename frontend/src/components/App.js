@@ -174,7 +174,7 @@ function App() {
   useEffect(() => {
     const token = localStorage.getItem('jwt');
     if (token) {
-        getToken(token)
+        auth.getContent(token)
             .then(res => {
                 if (res) {
                     setLoggedIn(true);
