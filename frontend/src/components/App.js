@@ -219,12 +219,12 @@ function App() {
   //   tokenCheck();
   // }, []);
 
-//   useEffect(() => {
-//     if (loggedIn === true) {
-//         navigate('/main')
-//         setEmail(email);
-//     }
-// }, [loggedIn, navigate]);
+  useEffect(() => {
+    if (loggedIn === true) {
+        navigate('/main')
+        setEmail(email);
+    }
+}, [loggedIn, navigate]);
 
 
   function handleSignOut() {
