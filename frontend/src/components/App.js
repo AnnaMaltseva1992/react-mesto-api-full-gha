@@ -199,7 +199,7 @@ function App() {
       .then((res) => {
         if (res.token) {
           setLoggedIn(true);
-          setEmail(res.data.email);
+          setEmail(email);
           localStorage.setItem("jwt", res.token);
           navigate("/main", { replace: true });
         }
