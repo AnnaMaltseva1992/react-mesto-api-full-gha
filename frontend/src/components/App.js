@@ -151,25 +151,46 @@ function App() {
       });
   }
 
-  const tokenCheck = () => {
-    const jwt = localStorage.getItem("jwt");
-    if (jwt) {
-      auth
-        .getContent(jwt)
-        .then((res) => {
-          setLoggedIn(true);
-          setEmail(res.data.email);
-          navigate("/main", { replace: true });
-        })
-        .catch((err) => {
-          if (err.status === 400) {
-            console.log("400 — Токен не передан или передан не в том формате");
-          } else if (err.status === 401) {
-            console.log("401 — Переданный токен некорректен");
-          }
-        });
+  // const tokenCheck = () => {
+  //   const jwt = localStorage.getItem("jwt");
+  //   if (jwt) {
+  //     auth
+  //       .getContent(jwt)
+  //       .then((res) => {
+  //         setLoggedIn(true);
+  //         setEmail(res.data.email);
+  //         navigate("/main", { replace: true });
+  //       })
+  //       .catch((err) => {
+  //         if (err.status === 400) {
+  //           console.log("400 — Токен не передан или передан не в том формате");
+  //         } else if (err.status === 401) {
+  //           console.log("401 — Переданный токен некорректен");
+  //         }
+  //       });
+  //   }
+  // };
+
+  useEffect(() => {
+    const token = localStorage.getItem('jwt');
+    if (token) {
+        getToken(token)
+            .then(res => {
+                if (res) {
+                    setLoggedIn(true);
+                    setEmail(res.data.email);
+                }
+            })
+            .catch((err) => {
+              if (err.status === 400) {
+                console.log("400 — Токен не передан или передан не в том формате");
+              } else if (err.status === 401) {
+                console.log("401 — Переданный токен некорректен");
+              }
+            });
     }
-  };
+}, []);
+
 
   function handleLogin(email, password) {
     auth
@@ -193,9 +214,9 @@ function App() {
       });
   }
 
-  useEffect(() => {
-    tokenCheck();
-  }, []);
+  // useEffect(() => {
+  //   tokenCheck();
+  // }, []);
 
   useEffect(() => {
     if (loggedIn === true) {
